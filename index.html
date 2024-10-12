@@ -6,20 +6,30 @@
   <title>Portfolio</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome for Social Media Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     body {
       font-family: 'Arial', sans-serif;
       position: relative;
+      transition: background-color 0.5s, color 0.5s;
     }
 
     /* Navbar Styling */
     .navbar {
       background-color: #007bff;
+      transition: background-color 0.5s, opacity 0.5s;
+      position: fixed;
+      width: 100%;
+      z-index: 999;
     }
 
-    .navbar a {
+    .navbar.scrolled {
+      opacity: 0.8;
+    }
+
+    .navbar-dark .navbar-nav .nav-link {
       color: white !important;
-      font-weight: bold;
     }
 
     /* Hero Section Styling with Smooth Curve Background */
@@ -72,15 +82,27 @@
       transform: translateY(-10px);
     }
 
-    /* Footer Styling */
-    .contact {
-      background-color: #004aad;
-      color: white;
-      padding: 50px 0;
+    /* Dark Mode Styling */
+    .dark-mode {
+      background-color: #121212;
+      color: #f1f1f1;
     }
 
-    .contact .form-control, .contact .btn {
-      border-radius: 0;
+    .dark-mode .navbar {
+      background-color: #333;
+    }
+
+    .dark-mode .hero {
+      background: linear-gradient(135deg, #333 0%, #111 100%);
+    }
+
+    .dark-mode .projects .card {
+      background-color: #333;
+      color: white;
+    }
+
+    .dark-mode .contact {
+      background-color: #1a1a1a;
     }
 
     /* Button Scroll to Top */
@@ -103,41 +125,72 @@
       background-color: #0056b3;
     }
 
-    /* Animations */
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    /* Social Media Icons */
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
     }
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .social-icons a {
+      margin: 0 10px;
+      color: white;
+      font-size: 2rem;
+      transition: color 0.3s;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
+    .social-icons a:hover {
+      color: #ddd;
+    }
+
+    /* Dark Mode Icon */
+    .dark-mode-toggle {
+      font-size: 1.5rem;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      z-index: 101;
+      color: white;
+    }
+
+    /* Contact Section Enhancements */
+    .contact {
+      background-color: #004aad;
+      color: white;
+      padding: 50px 0;
+      position: relative;
+    }
+
+    .contact:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/asfalt-light.png') repeat;
+      opacity: 0.1;
+    }
+
+    .contact-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .contact-desc {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1.2rem;
+      color: #ddd;
+    }
+
+    .contact .social-icons {
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
-
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
@@ -160,6 +213,9 @@
             <a class="nav-link" href="#contact">Contact</a>
           </li>
         </ul>
+        <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+          <span id="darkModeIcon">🌙</span>
+        </button>
       </div>
     </div>
   </nav>
@@ -206,13 +262,13 @@
           </div>
         </div>
         <div class="col-md-6">
-          <h4>Bootstrap</h4>
+          <h4>React.js</h4>
           <div class="progress skills-bar">
             <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
           </div>
         </div>
         <div class="col-md-6">
-          <h4>React.js</h4>
+          <h4>Node.js</h4>
           <div class="progress skills-bar">
             <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
           </div>
@@ -260,25 +316,14 @@
   <!-- Contact Section -->
   <section id="contact" class="contact">
     <div class="container">
-      <h2 class="section-title">Contact Me</h2>
-      <div class="row">
-        <div class="col-md-8 offset-md-2">
-          <form>
-            <div class="mb-3">
-              <label for="name" class="form-label">Name</label>
-              <input type="text" class="form-control" id="name" placeholder="Your Name">
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="Your Email">
-            </div>
-            <div class="mb-3">
-              <label for="message" class="form-label">Message</label>
-              <textarea class="form-control" id="message" rows="3" placeholder="Your Message"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Send</button>
-          </form>
-        </div>
+      <h2 class="contact-title">Contact Me</h2>
+      <p class="contact-desc">Feel free to reach out to me via social media platforms!</p>
+
+      <!-- Social Media Icons -->
+      <div class="social-icons">
+        <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
       </div>
     </div>
   </section>
@@ -289,11 +334,21 @@
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Scroll to Top Script -->
+  <!-- Dark Mode and Scroll to Top Scripts -->
   <script>
     window.onscroll = function() {
       toggleScrollToTopButton();
+      toggleNavbarOpacity();
     };
+
+    function toggleNavbarOpacity() {
+      const navbar = document.querySelector('.navbar');
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    }
 
     function toggleScrollToTopButton() {
       const btn = document.getElementById('scrollToTopBtn');
@@ -306,6 +361,19 @@
 
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleDarkMode() {
+      const body = document.body;
+      const icon = document.getElementById('darkModeIcon');
+      body.classList.toggle('dark-mode');
+
+      // Change dark mode icon
+      if (body.classList.contains('dark-mode')) {
+        icon.textContent = '☀️'; // Change to sun icon for dark mode
+      } else {
+        icon.textContent = '🌙'; // Change back to moon icon for light mode
+      }
     }
   </script>
 
