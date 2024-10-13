@@ -171,6 +171,14 @@
       font-size: small;
       margin-top: 30px;
     }
+
+    .navbar-nav .nav-link:hover, 
+    .navbar-nav .nav-link:active,
+    .contact .social-icons a:hover,
+    .contact .social-icons a:active {
+      color: #ffd700 !important;
+    }
+
   </style>
 </head>
 <body>
@@ -266,7 +274,7 @@
               <img src="img/ruby.png" class="card-img-top" alt="Proyek 1">
               <div class="card-body">
                 <h5 class="card-title">Hoshino Ruby</h5>
-                <p class="card-text">Hoshino Ruby.</p>
+                <p class="card-text">Oshi no Ko.</p>
               </div>
             </div>
           </a>
@@ -277,7 +285,7 @@
               <img src="img/ai.png" class="card-img-top" alt="Proyek 2">
               <div class="card-body">
                 <h5 class="card-title">Hoshino Ai</h5>
-                <p class="card-text">Hoshino Ai.</p>
+                <p class="card-text">Oshi no Ko.</p>
               </div>
             </div>
           </a>
@@ -288,7 +296,7 @@
               <img src="img/yuki.png" class="card-img-top" alt="Proyek 3">
               <div class="card-body">
                 <h5 class="card-title">Suou Yuki</h5>
-                <p class="card-text">Suou Yuki.</p>
+                <p class="card-text">Tokidoki Bosotto Roshiago de Dereru Tonari no Alya-san.                  .</p>
               </div>
             </div>
           </a>
@@ -300,7 +308,7 @@
   <section id="contact" class="contact">
     <div class="container">
       <h2 class="section-title">Kontak Saya</h2>
-      <p class="contact-desc">Jangan ragu untuk menghubungi saya melalui media sosial atau email saya untuk kolaborasi proyek atau pertanyaan lainnya.</p>
+      <p class="contact-desc">Jika Anda tertarik untuk berkolaborasi atau memiliki pertanyaan, jangan ragu untuk menghubungi saya!</p>
       <div class="social-icons">
         <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
         <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -310,54 +318,49 @@
   </section>
 
   <footer class="footer">
-    <!-- <p>&copy; 2024 Fildy. All Rights Reserved.</p> -->
-     <p>Dibuat menggunakan Bootstrap</p>
+    <!-- <p>© 2024 Fildy - Semua Hak Dilindungi</p> -->
+     <p>Dibuat menggunakan Bootstrap 👍</p>
   </footer>
 
-  <button id="scrollToTopBtn" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+  <button id="scrollToTopBtn" onclick="scrollToTop()">▲</button>
 
   <script>
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
-      var icon = document.getElementById('darkModeIcon');
-      if (document.body.classList.contains('dark-mode')) {
-        icon.textContent = '🌞';
+    window.onscroll = function() {
+      toggleScrollToTopBtn();
+      toggleNavbarOpacity();
+    };
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleScrollToTopBtn() {
+      const scrollTopBtn = document.getElementById('scrollToTopBtn');
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        scrollTopBtn.style.display = 'block';
       } else {
-        icon.textContent = '🌙';
+        scrollTopBtn.style.display = 'none';
       }
     }
 
-    window.onscroll = function() {
-      var navbar = document.querySelector('.navbar');
-      if (window.scrollY > 50) {
+    function toggleNavbarOpacity() {
+      const navbar = document.querySelector('.navbar');
+      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
         navbar.classList.add('scrolled');
       } else {
         navbar.classList.remove('scrolled');
       }
-
-      var scrollToTopBtn = document.getElementById("scrollToTopBtn");
-      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        scrollToTopBtn.style.display = "block";
-      } else {
-        scrollToTopBtn.style.display = "none";
-      }
-    };
-
-    function scrollToTop() {
-      document.body.scrollTop = 0; 
-      document.documentElement.scrollTop = 0; 
     }
 
-    document.addEventListener('click', function (event) {
-      var isClickInsideNavbar = document.querySelector('.navbar').contains(event.target);
-      var navbarToggler = document.querySelector('.navbar-toggler');
-
-      if (!isClickInsideNavbar && navbarToggler.getAttribute('aria-expanded') === 'true') {
-        navbarToggler.click();
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const icon = document.getElementById('darkModeIcon');
+      if (document.body.classList.contains('dark-mode')) {
+        icon.textContent = '☀️';
+      } else {
+        icon.textContent = '🌙';
       }
-    });
+    }
   </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
