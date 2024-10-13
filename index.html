@@ -14,20 +14,24 @@
     }
 
     .navbar {
-      background-color: #007bff;
+      background-color: rgba(0, 123, 255, 1);
       transition: background-color 0.5s, opacity 0.5s;
       position: fixed;
       width: 100%;
       z-index: 999;
+      backdrop-filter: blur(0px);
     }
 
     .navbar.scrolled {
-      opacity: 0.8;
+      background-color: rgba(0, 123, 255, 0.8);
+      backdrop-filter: blur(5px);
     }
 
     .navbar-dark .navbar-nav .nav-link {
       color: white !important;
+      transition: color 0.5s;
     }
+
 
     .hero {
       position: relative;
@@ -82,8 +86,14 @@
     }
 
     .dark-mode .navbar {
-      background-color: #333;
+      background-color: rgba(51, 51, 51, 1);
     }
+
+    .dark-mode .navbar.scrolled {
+      background-color: rgba(51, 51, 51, 0.8);
+      backdrop-filter: blur(5px);
+    }
+
 
     .dark-mode .hero {
       background: linear-gradient(135deg, #333 0%, #111 100%);
@@ -361,6 +371,7 @@
         icon.textContent = '🌙';
       }
     }
+    
   </script>
 </body>
 </html>
