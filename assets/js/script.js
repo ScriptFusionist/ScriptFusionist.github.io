@@ -37,3 +37,17 @@ function toggleDarkMode() {
     icon.textContent = "🌙";
   }
 }
+
+document.addEventListener("click", function (event) {
+  const navbarCollapse = document.querySelector(".navbar-collapse");
+  const navbarToggler = document.querySelector(".navbar-toggler");
+
+  // Periksa apakah area yang diklik bukan bagian dari navbar atau navbar-toggler
+  if (!navbarCollapse.contains(event.target) && !navbarToggler.contains(event.target)) {
+    // Jika navbar sedang dalam keadaan terbuka, tutup
+    const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+      toggle: false,
+    });
+    bsCollapse.hide();
+  }
+});
