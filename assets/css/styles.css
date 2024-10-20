@@ -181,7 +181,6 @@ body {
   color: #ffd700 !important;
 }
 
-/* Hamburger menu styles */
 .navbar-toggler {
   border: none;
   outline: none;
@@ -208,14 +207,12 @@ body {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Initial state for hidden elements */
 .hidden {
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-/* State when elements are visible */
 .show {
   opacity: 1;
   transform: translateY(0);
@@ -226,29 +223,29 @@ body {
   cursor: pointer;
   background-color: transparent;
   border: none;
-  border-radius: 50%; /* Membuat bentuk tombol bulat */
-  padding: 10px; /* Memberi ruang di sekitar ikon */
+  border-radius: 50%;
+  padding: 10px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
 }
 
 .dark-mode-toggle:hover {
-  transform: scale(1.2); /* Sedikit memperbesar ikon saat di-hover */
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Efek bayangan melingkar */
+  transform: scale(1.2);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
 }
 
 .dark-mode-toggle:active {
-  transform: scale(0.95); /* Efek lebih kecil saat ditekan */
+  transform: scale(0.95);
 }
 
 .dark-mode-toggle i {
   transition: transform 1s ease, opacity 1s ease;
   display: block;
-  color: white; /* Warna default */
+  color: white;
 }
 
 .dark-mode-toggle:hover i {
-  color: #fdd835; /* Mengubah warna menjadi lebih terang saat di-hover */
+  color: #fdd835;
 }
 
 

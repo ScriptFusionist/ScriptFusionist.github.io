@@ -28,61 +28,64 @@ function toggleNavbarOpacity() {
   }
 }
 
-let isDarkMode = false;
+let isDarkMode = localStorage.getItem('darkMode') === 'true';
+
+document.addEventListener('DOMContentLoaded', () => {
+  const icon = document.getElementById('darkModeIcon');
+  
+  if (isDarkMode) {
+    document.body.classList.add('dark-mode');
+    icon.classList.replace('fa-moon', 'fa-sun');
+  } else {
+    document.body.classList.remove('dark-mode');
+    icon.classList.replace('fa-sun', 'fa-moon');
+  }
+});
 
 function toggleDarkMode() {
   const icon = document.getElementById('darkModeIcon');
   
   if (!isDarkMode) {
-    // Animate moon setting
     icon.style.animation = "moonSet 1s forwards";
     setTimeout(() => {
-      // Change icon to sun and animate rising
       icon.classList.replace('fa-moon', 'fa-sun');
       icon.style.animation = "sunRise 1s forwards";
       document.body.classList.add('dark-mode');
-    }, 1000); // Delay to match the moon setting animation
+      localStorage.setItem('darkMode', 'true');
+    }, 1000);
   } else {
-    // Animate sun setting
     icon.style.animation = "sunSet 1s forwards";
     setTimeout(() => {
-      // Change icon to moon and animate rising
       icon.classList.replace('fa-sun', 'fa-moon');
       icon.style.animation = "moonRise 1s forwards";
       document.body.classList.remove('dark-mode');
-    }, 1000); // Delay to match the sun setting animation
+      localStorage.setItem('darkMode', 'false');
+    }, 1000);
   }
 
   isDarkMode = !isDarkMode;
 }
 
-
-// Event untuk menutup hamburger menu jika pengguna mengklik di luar area navbar
 document.addEventListener("click", function (event) {
   const navbarCollapse = document.querySelector(".navbar-collapse");
   const navbarToggler = document.querySelector(".navbar-toggler");
 
-  // Periksa apakah area yang diklik bukan bagian dari navbar atau navbar-toggler
   if (!navbarCollapse.contains(event.target) && !navbarToggler.contains(event.target)) {
-    // Jika navbar sedang dalam keadaan terbuka, tutup
     const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
       toggle: false,
     });
     bsCollapse.hide();
 
-    // Kembalikan ikon hamburger menjadi garis tiga
     if (navbarToggler.classList.contains("collapsed")) {
       navbarToggler.classList.remove("collapsed");
     }
   }
 });
 
-// Event untuk mengubah ikon hamburger menjadi 'X' dan sebaliknya saat di-klik
 document.querySelector('.navbar-toggler').addEventListener('click', function() {
   this.classList.toggle('collapsed');
 });
 
-// Observe elements and add 'show' class when they are in view
 document.addEventListener("DOMContentLoaded", () => {
   const hiddenElements = document.querySelectorAll(".hidden");
 
@@ -94,11 +97,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }, {
-    threshold: 0.1 // Adjust the threshold as needed
+    threshold: 0.1
   });
 
   hiddenElements.forEach((element) => {
     observer.observe(element);
   });
 });
-
