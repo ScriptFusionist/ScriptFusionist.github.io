@@ -28,15 +28,34 @@ function toggleNavbarOpacity() {
   }
 }
 
+let isDarkMode = false;
+
 function toggleDarkMode() {
-  document.body.classList.toggle("dark-mode");
-  const icon = document.getElementById("darkModeIcon");
-  if (document.body.classList.contains("dark-mode")) {
-    icon.textContent = "☀️";
+  const icon = document.getElementById('darkModeIcon');
+  
+  if (!isDarkMode) {
+    // Animate moon setting
+    icon.style.animation = "moonSet 1s forwards";
+    setTimeout(() => {
+      // Change icon to sun and animate rising
+      icon.classList.replace('fa-moon', 'fa-sun');
+      icon.style.animation = "sunRise 1s forwards";
+      document.body.classList.add('dark-mode');
+    }, 1000); // Delay to match the moon setting animation
   } else {
-    icon.textContent = "🌙";
+    // Animate sun setting
+    icon.style.animation = "sunSet 1s forwards";
+    setTimeout(() => {
+      // Change icon to moon and animate rising
+      icon.classList.replace('fa-sun', 'fa-moon');
+      icon.style.animation = "moonRise 1s forwards";
+      document.body.classList.remove('dark-mode');
+    }, 1000); // Delay to match the sun setting animation
   }
+
+  isDarkMode = !isDarkMode;
 }
+
 
 // Event untuk menutup hamburger menu jika pengguna mengklik di luar area navbar
 document.addEventListener("click", function (event) {
@@ -62,3 +81,24 @@ document.addEventListener("click", function (event) {
 document.querySelector('.navbar-toggler').addEventListener('click', function() {
   this.classList.toggle('collapsed');
 });
+
+// Observe elements and add 'show' class when they are in view
+document.addEventListener("DOMContentLoaded", () => {
+  const hiddenElements = document.querySelectorAll(".hidden");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1 // Adjust the threshold as needed
+  });
+
+  hiddenElements.forEach((element) => {
+    observer.observe(element);
+  });
+});
+

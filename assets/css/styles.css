@@ -207,3 +207,75 @@ body {
 .navbar-toggler.collapsed .bar3 {
   transform: rotate(-45deg) translate(5px, -5px);
 }
+
+/* Initial state for hidden elements */
+.hidden {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* State when elements are visible */
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dark-mode-toggle {
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%; /* Membuat bentuk tombol bulat */
+  padding: 10px; /* Memberi ruang di sekitar ikon */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.dark-mode-toggle:hover {
+  transform: scale(1.2); /* Sedikit memperbesar ikon saat di-hover */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Efek bayangan melingkar */
+}
+
+.dark-mode-toggle:active {
+  transform: scale(0.95); /* Efek lebih kecil saat ditekan */
+}
+
+.dark-mode-toggle i {
+  transition: transform 1s ease, opacity 1s ease;
+  display: block;
+  color: white; /* Warna default */
+}
+
+.dark-mode-toggle:hover i {
+  color: #fdd835; /* Mengubah warna menjadi lebih terang saat di-hover */
+}
+
+
+#darkModeIcon.sun-mode {
+  transform: translateY(0);
+}
+
+#darkModeIcon.moon-mode {
+  transform: translateY(0);
+}
+
+@keyframes sunSet {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100px); }
+}
+
+@keyframes sunRise {
+  0% { transform: translateY(100px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes moonSet {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100px); }
+}
+
+@keyframes moonRise {
+  0% { transform: translateY(-100px); }
+  100% { transform: translateY(0); }
+}
