@@ -180,3 +180,30 @@ body {
 .contact .social-icons a:active {
   color: #ffd700 !important;
 }
+
+/* Hamburger menu styles */
+.navbar-toggler {
+  border: none;
+  outline: none;
+}
+
+.navbar-toggler span {
+  display: block;
+  width: 30px;
+  height: 3px;
+  margin: 6px auto;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.navbar-toggler.collapsed .bar1 {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar-toggler.collapsed .bar2 {
+  opacity: 0;
+}
+
+.navbar-toggler.collapsed .bar3 {
+  transform: rotate(-45deg) translate(5px, -5px);
+}

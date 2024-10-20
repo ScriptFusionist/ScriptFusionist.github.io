@@ -38,6 +38,7 @@ function toggleDarkMode() {
   }
 }
 
+// Event untuk menutup hamburger menu jika pengguna mengklik di luar area navbar
 document.addEventListener("click", function (event) {
   const navbarCollapse = document.querySelector(".navbar-collapse");
   const navbarToggler = document.querySelector(".navbar-toggler");
@@ -49,5 +50,15 @@ document.addEventListener("click", function (event) {
       toggle: false,
     });
     bsCollapse.hide();
+
+    // Kembalikan ikon hamburger menjadi garis tiga
+    if (navbarToggler.classList.contains("collapsed")) {
+      navbarToggler.classList.remove("collapsed");
+    }
   }
+});
+
+// Event untuk mengubah ikon hamburger menjadi 'X' dan sebaliknya saat di-klik
+document.querySelector('.navbar-toggler').addEventListener('click', function() {
+  this.classList.toggle('collapsed');
 });
