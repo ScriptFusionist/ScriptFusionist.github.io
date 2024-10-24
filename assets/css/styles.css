@@ -37,6 +37,11 @@ body {
   z-index: 1;
 }
 
+.hero .contact-btn{
+  position: relative;
+  z-index: 10;
+}
+
 #particles-js {
   position: absolute;
   width: 100%;
@@ -69,6 +74,7 @@ body {
 
 .section-title {
   margin-bottom: 50px;
+  margin-top: 20px;
   font-size: 2rem;
   text-align: center;
   animation: fadeIn 1.5s;
@@ -236,11 +242,12 @@ body.dark-mode .project-card:hover {
   margin: 0 10px;
   color: white;
   font-size: 2rem;
-  transition: color 0.3s;
+  transition: color 0.3s, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .social-icons a:hover {
-  color: #ddd;
+  color: #ffd700;
+  transform: scale(1.2);
 }
 
 .dark-mode-toggle {
@@ -397,6 +404,69 @@ body.dark-mode .contact-btn:hover {
 
 #darkModeIcon.moon-mode {
   transform: translateY(0);
+}
+
+.activity-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.activity-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.activity-img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
+}
+
+.activity-card:hover .activity-img {
+  transform: scale(1.1);
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: 0.5s ease;
+}
+
+.activity-card.active .overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+@media (hover: none) {
+  .activity-card.active .activity-img {
+    transform: scale(1.1);
+  }
+
+  .activity-card {
+    cursor: pointer;
+  }
 }
 
 @keyframes sunSet {

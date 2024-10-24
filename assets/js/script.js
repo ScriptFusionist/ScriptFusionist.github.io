@@ -104,3 +104,13 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(element);
   });
 });
+
+document.querySelectorAll('.activity-card').forEach(card => {
+  card.addEventListener('click', function() {
+    // Hapus kelas active dari semua card yang lain
+    document.querySelectorAll('.activity-card').forEach(c => c.classList.remove('active'));
+    
+    // Tambahkan kelas active ke card yang di-click
+    this.classList.add('active');
+  });
+});
