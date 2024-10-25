@@ -9,10 +9,7 @@ function scrollToTop() {
 
 function toggleScrollToTopBtn() {
   const scrollTopBtn = document.getElementById("scrollToTopBtn");
-  if (
-    document.body.scrollTop > 100 ||
-    document.documentElement.scrollTop > 100
-  ) {
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
     scrollTopBtn.style.display = "block";
   } else {
     scrollTopBtn.style.display = "none";
@@ -40,11 +37,34 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.remove('dark-mode');
     icon.classList.replace('fa-sun', 'fa-moon');
   }
+
+  // Initialize hr animation observer
+  const hiddenHr = document.querySelectorAll("hr");
+  const hrObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("animate");
+        hrObserver.unobserve(entry.target); // Stop observing once animated
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  hiddenHr.forEach((hr) => {
+    hrObserver.observe(hr);
+  });
 });
 
 function toggleDarkMode() {
   const icon = document.getElementById('darkModeIcon');
-  
+  const hrElements = document.querySelectorAll("hr");
+
+  hrElements.forEach(hr => {
+    hr.classList.remove("animate");
+    hr.classList.add("hidden");
+  });
+
   if (!isDarkMode) {
     icon.style.animation = "moonSet 1s forwards";
     setTimeout(() => {
@@ -52,6 +72,13 @@ function toggleDarkMode() {
       icon.style.animation = "sunRise 1s forwards";
       document.body.classList.add('dark-mode');
       localStorage.setItem('darkMode', 'true');
+      
+      setTimeout(() => {
+        hrElements.forEach(hr => {
+          hr.classList.remove("hidden");
+          hr.classList.add("animate");
+        });
+      }, 500);
     }, 1000);
   } else {
     icon.style.animation = "sunSet 1s forwards";
@@ -60,6 +87,13 @@ function toggleDarkMode() {
       icon.style.animation = "moonRise 1s forwards";
       document.body.classList.remove('dark-mode');
       localStorage.setItem('darkMode', 'false');
+      
+      setTimeout(() => {
+        hrElements.forEach(hr => {
+          hr.classList.remove("hidden");
+          hr.classList.add("animate");
+        });
+      }, 500);
     }, 1000);
   }
 
@@ -106,11 +140,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.querySelectorAll('.activity-card').forEach(card => {
-  card.addEventListener('click', function() {
-    // Hapus kelas active dari semua card yang lain
+  card.addEventListener('click', function(event) {
+    event.stopPropagation();
     document.querySelectorAll('.activity-card').forEach(c => c.classList.remove('active'));
-    
-    // Tambahkan kelas active ke card yang di-click
     this.classList.add('active');
   });
 });
+
+document.addEventListener('click', function() {
+  document.querySelectorAll('.activity-card').forEach(c => c.classList.remove('active'));
+});
+
