@@ -142,21 +142,43 @@ document.addEventListener("DOMContentLoaded", () => {
 document.querySelectorAll('.activity-card').forEach(card => {
   card.addEventListener('click', function(event) {
     event.stopPropagation();
+    
+    // Remove active class from all cards, then add it to the clicked card
     document.querySelectorAll('.activity-card').forEach(c => c.classList.remove('active'));
     this.classList.add('active');
+
+    // Add animation effect when the card is active
+    setTimeout(() => {
+      this.querySelector('.overlay').style.transition = "all 0.7s ease";
+    }, 100);
   });
 });
 
+// Close overlay when clicking outside a card
 document.addEventListener('click', function() {
-  document.querySelectorAll('.activity-card').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.activity-card').forEach(c => {
+    c.classList.remove('active');
+    c.querySelector('.overlay').style.transition = "all 0.5s ease"; // Reset transition
+  });
 });
+
 
 // Quotes gaul dalam bahasa Indonesia
 const quotes = [
   "Koding adalah seni ngelawan masalah yang kadang kita bikin sendiri.",
+  "Debugging itu proses 'ngaku dosa' sambil nginget-inget kenapa dulu kita bikin kode kayak gitu.",
   "Debugger itu teman paling setia waktu ngoding, tapi musuh waktu lagi nge-chill.",
   "Pas kode udah bener, selalu inget ada error yang siap ngagetin.",
-  "Koding itu perjalanan dari 'kok error mulu?' ke 'eh kok bisa bener?'"
+  "Koding itu perjalanan dari 'kok error mulu?' ke 'eh kok bisa bener?'",
+  "Ngoding itu kayak kopi, makin pahit makin nagih.",
+  "Kode yang rapi itu mitos. Yang penting jalan dulu, estetik belakangan.",
+  "Stack Overflow itu surga, tapi jangan lupa ngucapin makasih.",
+  "Kalo ngoding sampe begadang itu wajar, kalo errornya selesai dalam sekali jalan itu anugerah.",
+  "Jangan terlalu cinta sama kode, kalo ditinggal error, sakitnya berasa!",
+  "Ngoding tuh belajar sabar level dewa, tiap dikit error, kita disuruh introspeksi diri.",
+  "Ngoding bareng itu seru, sampe ada yang nanya 'eh ini bug darimana ya?'",
+  "Kode jalan itu ibarat magic, tapi kalo nggak jalan, itu drama.",
+  "Skill ngoding bisa naik, tapi ingat, error juga ikut naik level."
 ];
 
 let currentQuoteIndex = 0;
@@ -195,3 +217,40 @@ function animateSkills() {
 // Trigger animation on scroll
 window.addEventListener('scroll', animateSkills);
 
+// Function to add transparent class to navbar when on top of the page
+function updateNavbarTransparency() {
+  const navbar = document.querySelector('.navbar');
+  if (window.scrollY === 0) {
+    navbar.classList.add('transparent');
+  } else {
+    navbar.classList.remove('transparent');
+  }
+}
+
+// Initial call and set up event listener
+window.addEventListener('load', updateNavbarTransparency);
+window.addEventListener('scroll', updateNavbarTransparency);
+
+document.querySelectorAll('.gallery-card').forEach(card => {
+  let isFlipped = false;
+  let timeout;
+
+  card.addEventListener('mouseenter', () => {
+    if (!isFlipped) {
+      card.classList.add('is-flipped');
+      isFlipped = true;
+    }
+    // Jika ada timeout sebelumnya, batalkan
+    clearTimeout(timeout);
+  });
+
+  card.addEventListener('mouseleave', () => {
+    // Gunakan timeout untuk menunggu sebelum membalik kartu kembali
+    timeout = setTimeout(() => {
+      if (isFlipped) {
+        card.classList.remove('is-flipped');
+        isFlipped = false;
+      }
+    }, 300); // 300 ms adalah waktu tunggu sebelum membalik kartu
+  });
+});

@@ -68,7 +68,7 @@
     </div>
   </nav>
 
-  <section id="home" class="hero hidden">
+  <section id="home" class="hero">
     <div id="particles-js"></div>
 
     <div class="container text-center">
@@ -86,17 +86,17 @@
     <div class="container">
       <h2 class="section-title">Tentang Saya</h2>
       <div class="row align-items-center">
-        <div class="col-md-6">
+        <div class="col-md-6 hidden">
           <p>Hai! Saya Fildy, seorang pengembang web yang bersemangat dengan pengalaman dalam menciptakan situs web dinamis dan responsif. Saya menikmati coding dan belajar teknologi baru untuk memecahkan masalah dunia nyata.</p>
-          <ul class="list-unstyled mt-3">
+          <ul class="list-unstyled mt-3 hidden">
             <li>🔥 Antusias teknologi & penggemar dunia digital</li>
             <li>🧑‍💻 Terampil dalam HTML, CSS, dan JavaScript</li>
             <li>🎨 Mencintai desain antarmuka yang ramah pengguna</li>
             <li>🌱 Selalu belajar dan mengikuti tren pengembangan web terbaru</li>
           </ul>
         </div>
-        <div class="col-md-6">
-          <div class="example-photo-wrapper">
+        <div class="col-md-6 hidden">
+          <div class="photo-wrapper">
             <div class="wave-background">
               <img src="assets/img/foto.png" alt="Contoh Foto" class="img-fluid rounded">
             </div>
@@ -127,8 +127,6 @@
     </div>
   </section>
   <hr>
-  
-  <!-- Skills Section -->
   <section id="skills" class="skills hidden">
     <div class="container">
       <h2 class="section-title">Keterampilan</h2>
@@ -155,6 +153,47 @@
           <h4>Python</h4>
           <div class="progress skills-bar">
             <div class="progress-bar" role="progressbar" data-width="75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <hr>
+  <section id="gallery" class="gallery-section hidden">
+    <div class="container">
+      <h2 class="section-title">Galeri Interaktif</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item hidden">
+          <div class="gallery-card">
+            <div class="gallery-front">
+              <img src="assets/img/menghasut.png" alt="Proyek 1" class="img-fluid">
+            </div>
+            <div class="gallery-back">
+              <h3>Terhasut</h3>
+              <p>Ada seorang Ningen disamping saya yang menghasut saya untuk memfoto bintang-bintang tersebut.</p>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item hidden">
+          <div class="gallery-card">
+            <div class="gallery-front">
+              <img src="assets/img/hasilfoto.png" alt="Proyek 2" class="img-fluid">
+            </div>
+            <div class="gallery-back">
+              <h3>Hasil foto</h3>
+              <p>Ini adalah hasil foto dari seorang Ningen yang menghasut saya.</p>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item hidden">
+          <div class="gallery-card">
+            <div class="gallery-front">
+              <img src="assets/img/memfoto.png" alt="Proyek 3" class="img-fluid">
+            </div>
+            <div class="gallery-back">
+              <h3>Memfoto Ningen</h3>
+              <p>Seorang Ningen sedang meminta seseorang untuk memfoto dirinya supaya dia bisa membuat JJ dengan foto tersebut lalu diupload ke sw.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -239,25 +278,25 @@
     <div class="container">
       <h2 class="section-title">Prakerin</h2>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 hidden">
           <div class="activity-card" data-activity="1">
-            <img src="assets/img/server.png" class="img-fluid activity-img" alt="Kegiatan 1">
+            <img src="assets/img/server.png" class="img-fluid activity-img" alt="Server Activity">
             <div class="overlay">
               <div class="text">Server</div>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 hidden">
           <div class="activity-card" data-activity="2">
-            <img src="assets/img/starlink.png" class="img-fluid activity-img" alt="Kegiatan 2">
+            <img src="assets/img/starlink.png" class="img-fluid activity-img" alt="Starlink Activity">
             <div class="overlay">
               <div class="text">Starlink</div>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 hidden">
           <div class="activity-card" data-activity="3">
-            <img src="assets/img/cctv.png" class="img-fluid activity-img" alt="Kegiatan 3">
+            <img src="assets/img/cctv.png" class="img-fluid activity-img" alt="CCTV Activity">
             <div class="overlay">
               <div class="text">CCTV</div>
             </div>
@@ -265,12 +304,12 @@
         </div>
       </div>
     </div>
-  </section>
+  </section>  
   <hr>
   <section class="form-section py-5 hidden">
     <div class="container">
       <div class="form-wrapper p-4 shadow-lg">
-        <h2 class="text-center mb-4">Contact Us</h2>
+        <h2 class="text-center mb-4">Hubungi Saya</h2>
         <form action="https://formspree.io/f/xjkvkjqp" method="post">
           <div class="mb-3">
             <label for="name" class="form-label">Nama</label>
@@ -296,7 +335,7 @@
 
   <section id="contact" class="contact">
     <div class="container">
-      <h2 class="section-title">Kontak Saya</h2>
+      <h2 class="section-title text-white">Kontak Saya</h2>
       <p class="contact-desc">Jika Anda tertarik untuk berkolaborasi atau memiliki pertanyaan, jangan ragu untuk menghubungi saya!</p>
       <div class="social-icons">
         <a href="https://www.youtube.com/@vyrlix" target="_blank"><i class="fab fa-youtube"></i></a>
@@ -308,7 +347,7 @@
 
   <footer class="footer hidden">
     <!-- <p>© 2024 Fildy - Semua Hak Dilindungi</p> -->
-     <p>Dibuat menggunakan <a href="https://getbootstrap.com/" target="_blank" style="text-decoration: none; color: #6610f2;">Bootstrap</a>👍</p>
+     <p>Dibuat oleh <a href="https://www.tiktok.com/@miyurin_" style="text-decoration: none; color: rgb(201, 6, 6);">Fildy</a>, menggunakan <a href="https://getbootstrap.com/" target="_blank" style="text-decoration: none; color: #6610f2;">Bootstrap</a>👍</p>
   </footer>
 
   <button id="scrollToTopBtn" onclick="scrollToTop()">▲</button>
