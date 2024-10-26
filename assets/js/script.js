@@ -194,3 +194,4 @@ function animateSkills() {
 
 // Trigger animation on scroll
 window.addEventListener('scroll', animateSkills);
+
