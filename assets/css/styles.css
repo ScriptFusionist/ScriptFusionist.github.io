@@ -94,6 +94,12 @@ body {
 
 .skills-bar {
   margin-top: 20px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  width: 0;
+  transition: width 2s ease;
 }
 
 body.dark-mode .project-card .card-body {
@@ -178,8 +184,8 @@ body.dark-mode .project-card:hover {
 }
 
 .project-card.chisato:hover .card-title {
-  color: #ff6347;
-  text-shadow: 0 0 10px rgba(255, 99, 71, 0.7);
+  color: #ff69b4;
+  text-shadow: 0 0 10px rgba(255, 105, 180, 0.7);
 }
 
 .project-card.nao:hover .card-title {
@@ -212,7 +218,6 @@ body.dark-mode .project-card:hover {
   background: linear-gradient(135deg, #1e1e1e, #121212);
   color: #f1f1f1;
 }
-
 
 .dark-mode .navbar {
   background-color: rgba(51, 51, 51, 1);
@@ -600,6 +605,70 @@ hr.animate {
 
 .dark-mode hr {
   background: linear-gradient(to right, transparent, #ccc, #fff, #ccc, transparent);
+}
+
+.quote-text {
+  font-size: 1.7rem;
+  font-style: italic;
+  color: #333;
+  opacity: 1;
+  transition: opacity 1s ease;
+  padding: 0 20px;
+}
+
+.quote-text::before,
+.quote-text::after {
+  content: '"';
+}
+
+.quote-text.fade-out {
+  opacity: 0;
+}
+
+.dark-mode .quote-text {
+  color: #f0f0f0;
+}
+
+.example-photo-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wave-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #007bff 30%, #6610f2 70%);
+  overflow: hidden;
+  width: 350px;
+  height: 350px;
+}
+
+.wave-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, rgba(0,123,255,0.5) 30%, rgba(102,16,242,0.5) 70%);
+  clip-path: path('M0,100 C50,150 150,50 200,100 L200,0 L0,0 Z');
+  z-index: 0;
+}
+
+.wave-background img {
+  position: relative;
+  z-index: 1;
+  width: 95%;
+  height: 95%;
+  display: block;
+  object-fit: cover;
+  border-radius: 50%;
+  transform: translateY(10%);
 }
 
 @media (hover: none) {

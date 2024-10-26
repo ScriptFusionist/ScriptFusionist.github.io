@@ -151,3 +151,46 @@ document.addEventListener('click', function() {
   document.querySelectorAll('.activity-card').forEach(c => c.classList.remove('active'));
 });
 
+// Quotes gaul dalam bahasa Indonesia
+const quotes = [
+  "Koding adalah seni ngelawan masalah yang kadang kita bikin sendiri.",
+  "Debugger itu teman paling setia waktu ngoding, tapi musuh waktu lagi nge-chill.",
+  "Pas kode udah bener, selalu inget ada error yang siap ngagetin.",
+  "Koding itu perjalanan dari 'kok error mulu?' ke 'eh kok bisa bener?'"
+];
+
+let currentQuoteIndex = 0;
+
+function changeQuote() {
+  const quoteElement = document.getElementById("dailyQuote");
+  // Fade out
+  quoteElement.classList.add("fade-out");
+
+  setTimeout(() => {
+    // Change quote text
+    currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+    quoteElement.textContent = quotes[currentQuoteIndex];
+    // Fade in
+    quoteElement.classList.remove("fade-out");
+  }, 1000); // Delay to match fade-out transition
+}
+
+// Optionally, auto-change quote every few seconds
+setInterval(changeQuote, 10000); // Changes every 10 seconds
+
+
+function animateSkills() {
+  const skillsSection = document.querySelector('#skills');
+  const progressBars = document.querySelectorAll('.progress-bar');
+
+  // Check if skills section is visible in viewport
+  if (skillsSection.getBoundingClientRect().top < window.innerHeight && skillsSection.getBoundingClientRect().bottom > 0) {
+    // Add animation to each progress bar
+    progressBars.forEach(bar => {
+      bar.style.width = bar.getAttribute('data-width');
+    });
+  }
+}
+
+// Trigger animation on scroll
+window.addEventListener('scroll', animateSkills);
