@@ -1,4 +1,4 @@
-const typedText = ["Web Developer", "Maou", "Tech Enthusiast"];
+const typedText = ["Web Developer", "Student", "Tech Enthusiast"];
 let typingIndex = 0;
 let letterIndex = 0;
 let currentText = '';
