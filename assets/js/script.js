@@ -38,13 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
     icon.classList.replace('fa-sun', 'fa-moon');
   }
 
-  // Initialize hr animation observer
   const hiddenHr = document.querySelectorAll("hr");
   const hrObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("animate");
-        hrObserver.unobserve(entry.target); // Stop observing once animated
+        hrObserver.unobserve(entry.target);
       }
     });
   }, {
@@ -143,81 +142,67 @@ document.querySelectorAll('.activity-card').forEach(card => {
   card.addEventListener('click', function(event) {
     event.stopPropagation();
     
-    // Remove active class from all cards, then add it to the clicked card
     document.querySelectorAll('.activity-card').forEach(c => c.classList.remove('active'));
     this.classList.add('active');
 
-    // Add animation effect when the card is active
     setTimeout(() => {
       this.querySelector('.overlay').style.transition = "all 0.7s ease";
     }, 100);
   });
 });
 
-// Close overlay when clicking outside a card
 document.addEventListener('click', function() {
   document.querySelectorAll('.activity-card').forEach(c => {
     c.classList.remove('active');
-    c.querySelector('.overlay').style.transition = "all 0.5s ease"; // Reset transition
+    c.querySelector('.overlay').style.transition = "all 0.5s ease";
   });
 });
 
-
-// Quotes gaul dalam bahasa Indonesia
 const quotes = [
-  "Koding adalah seni ngelawan masalah yang kadang kita bikin sendiri.",
-  "Debugging itu proses 'ngaku dosa' sambil nginget-inget kenapa dulu kita bikin kode kayak gitu.",
-  "Debugger itu teman paling setia waktu ngoding, tapi musuh waktu lagi nge-chill.",
-  "Pas kode udah bener, selalu inget ada error yang siap ngagetin.",
-  "Koding itu perjalanan dari 'kok error mulu?' ke 'eh kok bisa bener?'",
-  "Ngoding itu kayak kopi, makin pahit makin nagih.",
-  "Kode yang rapi itu mitos. Yang penting jalan dulu, estetik belakangan.",
-  "Stack Overflow itu surga, tapi jangan lupa ngucapin makasih.",
-  "Kalo ngoding sampe begadang itu wajar, kalo errornya selesai dalam sekali jalan itu anugerah.",
-  "Jangan terlalu cinta sama kode, kalo ditinggal error, sakitnya berasa!",
-  "Ngoding tuh belajar sabar level dewa, tiap dikit error, kita disuruh introspeksi diri.",
-  "Ngoding bareng itu seru, sampe ada yang nanya 'eh ini bug darimana ya?'",
-  "Kode jalan itu ibarat magic, tapi kalo nggak jalan, itu drama.",
-  "Skill ngoding bisa naik, tapi ingat, error juga ikut naik level."
+  "Coding is the art of solving problems we sometimes create ourselves.",
+  "Debugging is the process of 'confessing sins' while remembering why we wrote that code.",
+  "The debugger is your most loyal friend when coding, but your enemy when relaxing.",
+  "When the code finally works, remember there's always another error waiting.",
+  "Coding is a journey from 'why so many errors?' to 'wait, how did this work?'",
+  "Coding is like coffee: the more bitter it gets, the more addictive it becomes.",
+  "Clean code is a myth. Just make it work first, aesthetics come later.",
+  "Stack Overflow is heaven, but don't forget to say thanks.",
+  "Staying up late coding is normal; fixing errors in one go is a blessing.",
+  "Don't fall too hard for your code; when it errors on you, it really hurts!",
+  "Coding teaches god-level patience - every small error is a call for self-reflection.",
+  "Coding together is fun until someone asks 'where did this bug come from?'",
+  "Working code feels like magic; broken code feels like drama.",
+  "Your coding skills may level up, but remember, so do your errors."
 ];
 
 let currentQuoteIndex = 0;
 
 function changeQuote() {
   const quoteElement = document.getElementById("dailyQuote");
-  // Fade out
   quoteElement.classList.add("fade-out");
 
   setTimeout(() => {
-    // Change quote text
     currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
     quoteElement.textContent = quotes[currentQuoteIndex];
-    // Fade in
     quoteElement.classList.remove("fade-out");
-  }, 1000); // Delay to match fade-out transition
+  }, 1000);
 }
 
-// Optionally, auto-change quote every few seconds
-setInterval(changeQuote, 10000); // Changes every 10 seconds
-
+setInterval(changeQuote, 10000);
 
 function animateSkills() {
   const skillsSection = document.querySelector('#skills');
   const progressBars = document.querySelectorAll('.progress-bar');
 
-  // Check if skills section is visible in viewport
   if (skillsSection.getBoundingClientRect().top < window.innerHeight && skillsSection.getBoundingClientRect().bottom > 0) {
-    // Add animation to each progress bar
     progressBars.forEach(bar => {
       bar.style.width = bar.getAttribute('data-width');
     });
   }
 }
 
-// Trigger animation on scroll
 window.addEventListener('scroll', animateSkills);
 
-// Function to add transparent class to navbar when on top of the page
 function updateNavbarTransparency() {
   const navbar = document.querySelector('.navbar');
   if (window.scrollY === 0) {
@@ -227,7 +212,6 @@ function updateNavbarTransparency() {
   }
 }
 
-// Initial call and set up event listener
 window.addEventListener('load', updateNavbarTransparency);
 window.addEventListener('scroll', updateNavbarTransparency);
 
@@ -240,17 +224,15 @@ document.querySelectorAll('.gallery-card').forEach(card => {
       card.classList.add('is-flipped');
       isFlipped = true;
     }
-    // Jika ada timeout sebelumnya, batalkan
     clearTimeout(timeout);
   });
 
   card.addEventListener('mouseleave', () => {
-    // Gunakan timeout untuk menunggu sebelum membalik kartu kembali
     timeout = setTimeout(() => {
       if (isFlipped) {
         card.classList.remove('is-flipped');
         isFlipped = false;
       }
-    }, 300); // 300 ms adalah waktu tunggu sebelum membalik kartu
+    }, 300);
   });
 });
