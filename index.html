@@ -1,349 +1,283 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <style>
-    .social-media-icons {
-      display: flex;
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .social-icon {
-      font-size: 36px;
-      color: #000;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-
-    .social-icon:hover {
-      color: #ffd700;
-      transform: scale(1.2);
-    }
-
-    .dark-mode .social-icon {
-      color: #fff; 
-    }
-
-    .dark-mode .social-icon:hover {
-      color: #ffd700;
-    }
-  </style>
+  <title>Portfolio Vyrina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css" title="" type="" />
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("Roj5EFhl3hb9NaQum");
+    })();
+  </script>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container">
-      <a class="navbar-brand" href="#home">Vyrina</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="bar1"></span>
-        <span class="bar2"></span>
-        <span class="bar3"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#skills">Skills</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#projects">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
-          </li>
-        </ul>
-        <button class="dark-mode-toggle" onclick="toggleDarkMode()">
-          <i id="darkModeIcon" class="fas fa-moon"></i>
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="#" class="logo">Vyrina</a>
+      
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      
+      <div class="nav-right">
+        <button class="dark-mode-toggle" id="darkModeToggle">
+          <div class="icon-wrapper">
+            <i class="fas fa-moon moon-icon"></i>
+            <i class="fas fa-sun sun-icon"></i>
+          </div>
+        </button>
+        <button class="menu-toggle" id="menuToggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
         </button>
       </div>
     </div>
   </nav>
 
-  <section id="home" class="hero">
-    <div id="particles-js"></div>
+  <div id="emailNotification" class="notification">
+    <span class="icon"><i class="fas fa-check-circle"></i></span>
+    <span class="message">Message sent successfully!</span>
+  </div>
 
-    <div class="container text-center">
-      <img src="https://i.pinimg.com/736x/1b/88/92/1b8892d1ee65e258a2ce7804f52c5f9a.jpg" alt="Profile Photo" class="rounded-circle img-thumbnail" style="width: 150px;">
+  <section id="home" class="hero">
+    <div class="particles-container" id="particles"></div>
+    <div class="container hero-content">
+      <img src="https://i.pinimg.com/736x/1b/88/92/1b8892d1ee65e258a2ce7804f52c5f9a.jpg" alt="Vyrina" class="hero-img">
       <h1>Vyrina</h1>
-      <p>Web Developer | Student | Tech Enthusiast</p>
-      <p class="typing-text">
+      <p>Web Developer & AI Enthusiast</p>
+      <div class="typing-text">
         <span id="typing"></span>
-      </p>
-      <a href="https://vyrina.github.io/smartdecode" class="btn btn-primary contact-btn">SmartDecode</a>
+      </div>
+      <a href="#projects" class="btn">View My Work</a>
+    </div>
+    <div class="hero-wave-container">
+      <svg class="hero-wave" viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="var(--bg)" fill-opacity="1">
+          <animate attributeName="d" dur="10s" repeatCount="indefinite"
+            values="
+              M0,160 C360,280 1080,40 1440,160 L1440,320 L0,320 Z;
+              M0,120 C360,60 1080,240 1440,120 L1440,320 L0,320 Z;
+              M0,160 C360,280 1080,40 1440,160 L1440,320 L0,320 Z
+            " />
+        </path>
+      </svg>
     </div>
   </section>
-  
-  <section id="about" class="about hidden">
+
+  <section id="about" class="about">
     <div class="container">
       <h2 class="section-title">About Me</h2>
-      <div class="row align-items-center">
-        <div class="col-md-6 hidden">
-          <p>Hi! I'm Vyrina, a passionate web developer with experience in creating dynamic and responsive websites. I enjoy coding and learning new technologies to solve real-world problems.</p>
-          <ul class="list-unstyled mt-3 hidden">
-            <li>🔥 Tech enthusiast & digital world fan</li>
-            <li>🧑‍💻 Skilled in HTML, CSS, and JavaScript</li>
-            <li>🎨 Love creating user-friendly interface designs</li>
-            <li>🌱 Always learning and keeping up with the latest web development trends</li>
+      <div class="about-content">
+        <div class="about-text">
+          <h2>Hello, I'm Vyrina!</h2>
+          <p>I'm a student passionate about technology, especially in the fields of web development and artificial intelligence.</p>
+          <p>Currently, I'm focused on building responsive websites and experimenting with AI powered tools.</p>
+          <ul class="about-list">
+            <li>Learning AI fundamentals and real world applications</li>
+            <li>Experience with HTML, CSS, JavaScript, and simple AI tools</li>
+            <li>Exploring AI powered interfaces and smart web utilities</li>
+            <li>Driven by curiosity and the desire to build helpful technology</li>
           </ul>
+          <a href="#contact" class="btn">Get In Touch</a>
         </div>
-        <div class="col-md-6 hidden">
+        <div class="about-img">
           <div class="photo-wrapper">
             <div class="wave-background">
-              <img src="assets/img/foto.png" alt="Sample Photo" class="img-fluid rounded">
+              <img src="foto.png" alt="Vyrina Profile">
             </div>
           </div>
         </div>
-        <div class="col-md-6 hidden">
-          <h3 class="mt-4">Let's Connect</h3>
-          <div class="social-media-icons mt-3">
-            <a href="https://wa.me/+6289623150502" target="_blank" class="social-icon">
-              <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="https://www.tiktok.com/@miyurin_" target="_blank" class="social-icon">
-              <i class="fab fa-tiktok"></i>
-            </a>
-            <a href="https://www.youtube.com/@vyrlix" target="_blank" class="social-icon">
-              <i class="fab fa-youtube"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <hr>
-  <section id="quote" class="quote hidden">
-    <div class="container text-center">
-      <h2 class="section-title">Quotes</h2>
-      <p id="dailyQuote" class="quote-text">Coding is the art of solving problems we sometimes create ourselves.</p>
-    </div>
-  </section>
-  <hr>
-  <section id="skills" class="skills hidden">
-    <div class="container">
-      <h2 class="section-title">Skills</h2>
-      <div class="row">
-        <div  class="col-md-6 py-2">
-          <h4>HTML & CSS</h4>
-          <div class="progress skills-bar">
-            <div class="progress-bar" role="progressbar" data-width="90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
-          </div>
-        </div>
-        <div class="col-md-6 py-2">
-          <h4>JavaScript</h4>
-          <div class="progress skills-bar">
-            <div class="progress-bar" role="progressbar" data-width="80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
-          </div>
-        </div>
-        <div class="col-md-6 py-2">
-          <h4>React.js</h4>
-          <div class="progress skills-bar">
-            <div class="progress-bar" role="progressbar" data-width="85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
-          </div>
-        </div>
-        <div class="col-md-6 py-2">
-          <h4>Python</h4>
-          <div class="progress skills-bar">
-            <div class="progress-bar" role="progressbar" data-width="75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <hr>
-  <section id="gallery" class="gallery-section hidden">
-    <div class="container">
-      <h2 class="section-title">Interactive Gallery</h2>
-      <div class="gallery-grid">
-        <div class="gallery-item hidden">
-          <div class="gallery-card">
-            <div class="gallery-front">
-              <img src="assets/img/menghasut.png" alt="Project 1" class="img-fluid">
-            </div>
-            <div class="gallery-back">
-              <h3>Starry Night</h3>
-              <p>My night photography results.</p>
-            </div>
-          </div>
-        </div>
-        <div class="gallery-item hidden">
-          <div class="gallery-card">
-            <div class="gallery-front">
-              <img src="assets/img/hasilfoto.png" alt="Project 2" class="img-fluid">
-            </div>
-            <div class="gallery-back">
-              <h3>Landscape</h3>
-              <p>My morning photography results.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <hr>
-  <section id="projects" class="projects hidden">
-    <div class="container">
-      <h2 class="section-title">Projects</h2>
-      <div class="row">
-        <div class="col-md-4 hidden">
-          <a href="https://vyrina.github.io/Project-1" class="project-link" target="_blank">
-            <div class="card project-card ruby">
-              <img src="assets/img/ruby.png" class="card-img-top" alt="Project 1">
-              <div class="card-body">
-                <h5 class="card-title">Hoshino Ruby</h5>
-                <p class="card-text">Oshi no Ko.</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 hidden">
-          <a href="https://vyrina.github.io/Project-2" class="project-link" target="_blank">
-            <div class="card project-card ai">
-              <img src="assets/img/ai.png" class="card-img-top" alt="Project 2">
-              <div class="card-body">
-                <h5 class="card-title">Hoshino Ai</h5>
-                <p class="card-text">Oshi no Ko.</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 hidden">
-          <a href="https://vyrina.github.io/Project-3" class="project-link" target="_blank">
-            <div class="card project-card yuki">
-              <img src="assets/img/yuki.png" class="card-img-top" alt="Project 3">
-              <div class="card-body">
-                <h5 class="card-title">Suou Yuki</h5>
-                <p class="card-text">Tokidoki Bosotto Roshiago de Dereru Tonari no Alya-san.</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 hidden">
-          <a href="https://vyrina.github.io/Project-4" class="project-link" target="_blank">
-            <div class="card project-card akane">
-              <img src="assets/img/akane.png" class="card-img-top" alt="Project 4">
-              <div class="card-body">
-                <h5 class="card-title">Kurokawa Akane</h5>
-                <p class="card-text">Oshi no Ko.</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 hidden">
-          <a href="https://vyrina.github.io/Project-5" class="project-link" target="_blank">
-            <div class="card project-card chisato">
-              <img src="assets/img/chisato.png" class="card-img-top" alt="Project 5">
-              <div class="card-body">
-                <h5 class="card-title">Nishikigi Chisato</h5>
-                <p class="card-text">Lycoris Recoil.</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 hidden">
-          <a href="https://vyrina.github.io/Project-6" class="project-link" target="_blank">
-            <div class="card project-card nao">
-              <img src="assets/img/nao.png" class="card-img-top" alt="Project 6">
-              <div class="card-body">
-                <h5 class="card-title">Nao Tomori</h5>
-                <p class="card-text">Charlotte.</p>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <hr>
-  <section id="journey" class="journey hidden">
-    <div class="container">
-      <h2 class="section-title">Internship</h2>
-      <div class="row">
-        <div class="col-md-4 hidden">
-          <div class="activity-card" data-activity="1">
-            <img src="assets/img/server.png" class="img-fluid activity-img" alt="Server Activity">
-            <div class="overlay">
-              <div class="text">Server</div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 hidden">
-          <div class="activity-card" data-activity="2">
-            <img src="assets/img/starlink.png" class="img-fluid activity-img" alt="Starlink Activity">
-            <div class="overlay">
-              <div class="text">Starlink</div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 hidden">
-          <div class="activity-card" data-activity="3">
-            <img src="assets/img/cctv.png" class="img-fluid activity-img" alt="CCTV Activity">
-            <div class="overlay">
-              <div class="text">CCTV</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>  
-  <hr>
-  <section class="form-section py-5 hidden">
-    <div class="container">
-      <div class="form-wrapper p-4 shadow-lg">
-        <h2 class="text-center mb-4">Contact Me</h2>
-        <form action="https://formspree.io/f/xjkvkjqp" method="post">
-          <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
-          </div>
-          <div class="mb-3">
-            <label for="message" class="form-label">Message</label>
-            <textarea class="form-control" id="message" name="message" rows="4" placeholder="Enter your message" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary w-100">Send</button>
-        </form>
       </div>
     </div>
   </section>
 
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 250"  style="display:block">
-    <path id="mountain-path" fill="#004aad" d="M0,192L60,181.3C120,171,240,149,360,160C480,171,600,213,720,224C840,235,960,213,1080,192C1200,171,1320,149,1380,138.7L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
-  </svg>
+  <section id="skills" class="skills">
+    <div class="container">
+      <h2 class="section-title">My Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fab fa-html5"></i></div>
+          <h3 class="skill-title">HTML & CSS</h3>
+          <div class="skill-bar"><div class="skill-progress" data-width="95"></div></div>
+          <div class="skill-percent">95%</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fab fa-js"></i></div>
+          <h3 class="skill-title">JavaScript</h3>
+          <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
+          <div class="skill-percent">90%</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fab fa-react"></i></div>
+          <h3 class="skill-title">React.js</h3>
+          <div class="skill-bar"><div class="skill-progress" data-width="85"></div></div>
+          <div class="skill-percent">85%</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fab fa-python"></i></div>
+          <h3 class="skill-title">Python</h3>
+          <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
+          <div class="skill-percent">80%</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-database"></i></div>
+          <h3 class="skill-title">Database Design</h3>
+          <div class="skill-bar"><div class="skill-progress" data-width="85"></div></div>
+          <div class="skill-percent">85%</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-mobile-alt"></i></div>
+          <h3 class="skill-title">Responsive Design</h3>
+          <div class="skill-bar"><div class="skill-progress" data-width="92"></div></div>
+          <div class="skill-percent">92%</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects">
+    <div class="container">
+      <h2 class="section-title">My Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-img">
+            <img src="images/smartdecode.png" alt="SmartDecode Screenshot">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">SmartDecode</h3>
+            <span class="project-category">Utility / Web Tool</span>
+            <p>SmartDecode is a lightweight and fast URL decoding tool that helps you bypass shortlinks.</p>
+            <div class="project-links">
+              <a href="https://vyrina.github.io/smartdecode" class="project-link" target="_blank" title="Visit Website"><i class="fas fa-external-link-alt"></i></a>
+              <a href="https://github.com/vyrina/smartdecode" class="project-link" target="_blank" title="View Source on GitHub"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-img">
+            <img src="images/hoshinoai.png" alt="Hoshino Ai Profile Card">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Profile Card: Hoshino Ai</h3>
+            <span class="project-category">UI Design</span>
+            <p>A beautiful and modern profile card design inspired by Hoshino Ai.</p>
+            <div class="project-links">
+              <a href="https://vyrina.github.io/hoshinoai" class="project-link" target="_blank" title="Visit Demo"><i class="fas fa-external-link-alt"></i></a>
+              <a href="https://github.com/vyrina/hoshinoai" class="project-link" target="_blank" title="View Source on GitHub"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section id="contact" class="contact">
     <div class="container">
-      <h2 class="section-title text-white">Contact Me</h2>
-      <p class="contact-desc">If you're interested in collaborating or have any questions, feel free to contact me!</p>
-      <div class="social-icons">
-        <a href="https://www.youtube.com/@vyrlix" target="_blank"><i class="fab fa-youtube"></i></a>
-        <a href="https://www.tiktok.com/@miyurin_" target="_blank"><i class="fab fa-tiktok"></i></a>
-        <a href="https://wa.me/+6289623150502" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <h2 class="contact-title">Let's Connect</h2>
+          <div class="contact-detail">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div class="contact-text">
+              <h3>Email</h3>
+              <p>Vyrina.dev@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+            <div class="contact-text">
+              <h3>Phone</h3>
+              <p>Just ignore this</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="contact-text">
+              <h3>Location</h3>
+              <p>Jakarta, Indonesia</p>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="https://github.com/vyrina" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://ko-fi.com/vyrina" class="social-link" target="_blank"><i class="fas fa-coffee"></i></a>
+            <a href="https://trakteer.id/vyrina" class="social-link" target="_blank"><i class="fas fa-gift"></i></a>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" id="name" name="user_name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" name="user_email" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="subject" class="form-label">Subject</label>
+              <input type="text" id="subject" name="subject" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" name="message" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn" id="submitBtn">
+              <span id="submitText">Send Message</span>
+              <span id="loadingSpinner" style="display: none;"><i class="fas fa-spinner fa-spin"></i> Sending...</span>
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   </section>
 
-  <footer class="footer hidden">
-    <p>Created by <a href="https://www.tiktok.com/@miyurin_" style="text-decoration: none; color: rgb(201, 6, 6);">Vyrina</a>, using <a href="https://getbootstrap.com/" target="_blank" style="text-decoration: none; color: #6610f2;">Bootstrap</a>👍</p>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-about">
+        <a href="#" class="footer-logo">Vyrina</a>
+        <p class="footer-about">Passionate web developer creating beautiful, functional, and user-friendly digital experiences.</p>
+        <div class="social-footer">
+          <a href="https://github.com/vyrina" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://ko-fi.com/vyrina" target="_blank"><i class="fas fa-coffee"></i></a>
+          <a href="https://trakteer.id/vyrina" target="_blank"><i class="fas fa-gift"></i></a>
+        </div>
+      </div>
+      <div class="footer-links-container">
+        <h3 class="footer-title">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact-container">
+        <h3 class="footer-title">Contact Info</h3>
+        <ul class="footer-contact">
+          <li><i class="fas fa-envelope"></i> Vyrina.dev@gmail.com</li>
+          <li><i class="fas fa-phone"></i> Just ignore this</li>
+          <li><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <p class="copyright">© 2025 Vyrina. All rights reserved.</p>
+      </div>
+    </div>
   </footer>
 
-  <button id="scrollToTopBtn" onclick="scrollToTop()">▲</button>
+  <div class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script src="assets/js/script.js"></script>
-  <script src="assets/js/typing.js"></script>
-  <script src="assets/js/particles.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
